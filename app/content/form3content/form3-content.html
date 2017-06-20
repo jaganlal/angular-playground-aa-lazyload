@@ -1,0 +1,49 @@
+<h3>Form 3 - NO AA</h3>
+<div ism class="form-horizontal form3-content" ng-form="form3" ng-controller="Form3ContentController">
+  <input name="username" tabindex="1" class="form-input" 
+              placeholder="Username *" 
+              type="text" 
+              ng-model="vm.model.username" 
+              ng-minlength="1"
+              ng-maxlength="50" 
+              ng-pattern="/^[a-z ,.'-]+$/i"
+              required/>
+
+	<span class="error help-block" ng-messages="form3.username.$error" ng-show="form3.username.$touched">
+	  <span ng-message="required">Username is required</span>
+	  <span ng-message="minlength">Username should be atleast 1 character</span>
+	  <span ng-message="maxlength">Username shouldn't be more than 50 characters</span>
+	  <span ng-message="pattern">Invalid Username</span>
+	</span>
+
+  <input style="display: inline-block; margin-bottom: 10px;" type="checkbox" name="emailpresent" ng-model="vm.model.emailpresent">
+  Do have an email id?
+
+  <span ng-if="vm.model.emailpresent">
+		<input tabindex="2" name="email" class="form-input" 
+		          placeholder="Email address" 
+		          type="email" 
+		          ng-model="vm.model.email" 
+		          ng-minlength="6"
+		          ng-maxlength="50" 
+		          ng-model-options="{ updateOn: 'default blur', debounce: {default: 500, blur: 0} }" 
+		          ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"
+		          email-exists="emailexists" 
+		          />
+		<span class="error help-block" ng-messages="form3.email.$error" ng-show="form3.email.$touched">
+		  <span ng-message="minlength">Email address should be atleast 6 characters</span>
+		  <span ng-message="maxlength">Email address shouldn't be more than 50 characters</span>
+		  <span ng-message="pattern">Invalid Email address</span>
+		  <span ng-message="isEmailExistsCheck">Checking availability...</span>
+		  <span ng-message="emailAlreadyExists">The specified email address is already in use, please choose different email address</span>
+		</span>
+	</span>
+
+	<input zip-validator type="text" name="zc" ng-model="vm.model.zipcode" placeholder="Zipcode" />
+	{{vm.model.zipcode}}
+    <span class="error help-block" ng-messages="form3.zc.$error" ng-show="form3.zc.$touched">
+      <span ng-message="zip">"Invalid zipcode"</span>
+    </span>
+
+  <input type="submit" class="btn btn-primary" />
+</div>

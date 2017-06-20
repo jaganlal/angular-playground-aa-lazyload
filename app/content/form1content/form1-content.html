@@ -1,0 +1,9 @@
+<h3>Form 1 - AA</h3>
+<div aa-configured-form="" validation-config="vm.formconfig" class="form-horizontal form1-content" ng-form="form1" ng-controller="Form1ContentController">
+  <input type="email" aa-field-group="vm.model.email" required />
+  <input type="text" aa-field-group="vm.model.firstname" required />
+  <input type="text" aa-field-group="vm.model.lastname" required />
+  <input type="text" aa-field-group="vm.model.age" required />
+
+  <button aa-submit-form="vm.submit()" type="submit" class="btn btn-primary">Submit</button>
+</div>

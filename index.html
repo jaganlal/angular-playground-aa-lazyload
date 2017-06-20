@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html en="us">
+
+<head>
+  <title>Angular Playground </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="app/content/maincontent/main-content.css">
+  <!-- <link rel="stylesheet" href="app/content/form1content/form1-content.css">
+  <link rel="stylesheet" href="app/content/form2content/form2-content.css"> -->
+  <link rel="stylesheet" href="app/footer/footer.css">
+  <link rel="stylesheet" href="app/nav/nav.css">
+  <link rel="stylesheet" href="app/components/timings/timings.css">
+  <link rel="stylesheet" href="app/components/tab/tab.css">
+
+  <base href="/"/>
+</head>
+
+<body data-ng-app="jtAngularPlayground">
+  <div ui-view="nav"></div>
+  <div ui-view></div>
+  <div ui-view="footer"></div>
+
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-messages/angular-messages.min.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/angular-cookies/angular-cookies.min.js"></script>
+  <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="lib/angular-resource/angular-resource.min.js"></script>
+  <script src="lib/angular-agility/dist/angular-agility.js"></script>
+  <script src="lib/oclazyload/dist/ocLazyLoad.js"></script>
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  
+  <script src="app/app.js"></script>
+  <script src="app/app.config.js"></script>
+  <script src="app/app.config.log.decorator.js"></script>
+  <script src="app/app.config.exceptionhandler.decorator.js"></script>
+  <script src="app/app.run.js"></script>
+  <script src="app/app.routes.js"></script>
+
+  <script src="app/services/error.factory.js"></script>
+  
+  <script src="app/content/maincontent/maincontentcontroller.js"></script>
+  <!-- <script src="app/content/form1content/form1contentcontroller.js"></script>
+  <script src="app/content/form2content/form2contentcontroller.js"></script> -->
+  <script src="app/directives/emailexists/emailexists.directive.js"></script>
+  <script src="app/directives/zipcode/zipvalidator.directive.js"></script>
+  <script src="app/directives/ism/ism.directive.js"></script>
+
+</body>
+
+</html>

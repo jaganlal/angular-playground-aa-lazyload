@@ -1,0 +1,100 @@
+//colors
+$white: #fff;
+$color_bon_jour_approx: #e0e0e0;
+$black: #000;
+$color_alto_approx: #ddd;
+
+body {
+	padding: 5px;
+}
+main {
+	padding: 0 20px;
+	min-height: 300px;
+	.products-table {
+		margin-top: 20px;
+		.delete-column {
+			width: 60px;
+		}
+	}
+	&.ng-enter {
+		//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: .5s;
+		opacity: 0;
+	}
+	&.ng-enter-active {
+		opacity: 1;
+	}
+	.view-side-form {
+		.side-form {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			.content {
+				position: absolute;
+				z-index: 100;
+				top: 0;
+				right: 0;
+				width: 80%;
+				height: 100%;
+				overflow: auto;
+				background: $white;
+				padding: 20px;
+				border-left: 1px solid $color_bon_jour_approx;
+			}
+			.background {
+				background: $black;
+				opacity: .8;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		&.ng-enter {
+			//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+			transition: .5s;
+			.side-form {
+				.content {
+					right: -80%;
+				}
+				.background {
+					opacity: 0;
+				}
+			}
+		}
+		&.ng-leave {
+			//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+			transition: .5s;
+		}
+		&.ng-enter-active .side-form {
+			.content {
+				//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+				transition: right .5s;
+				right: 0;
+			}
+			.background {
+				//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+				transition: opacity .5s;
+				opacity: .8;
+			}
+		}
+		&.ng-leave-active .side-form {
+			.content {
+				//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+				transition: right .5s;
+				right: -100%;
+			}
+			.background {
+				//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+				transition: opacity .5s;
+				opacity: 0;
+			}
+		}
+	}
+}
+footer {
+	text-align: center;
+	margin-top: 20px;
+	padding: 20px;
+	border-top: 1px solid $color_alto_approx;
+}

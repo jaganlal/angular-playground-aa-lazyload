@@ -1,0 +1,9 @@
+<h1 class="timings"> {{$ctrl.today}} </h1>
+<ul data-ng-class="{'list':layoutMode == 1}" class="timings-container">
+  <li ng-class="animation" ng-repeat="item in $ctrl.classTimings" ng-click="$ctrl.removeTime($event, $index, item)" class="item">{{item.timing}}</li>
+</ul>
+<ul data-ng-class="{'list':layoutMode == 1}" class="status-container">
+  <li ng-class="animation" ng-repeat="item in $ctrl.classTimings" ng-click="$ctrl.showPopover($event, $index, item)" class="item">
+    <div popover-placement="bottom" popover="{{item.user}}" class="po">{{item.status}}</div>
+  </li>
+</ul>

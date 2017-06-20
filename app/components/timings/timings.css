@@ -1,0 +1,64 @@
+.timings {
+  text-decoration: underline;
+}
+
+.timings-modal {
+}
+
+.timings-container {
+  width: 100%;
+  padding: 0;
+
+  float:left; width: 65%; overflow: hidden;
+}
+
+.timings-container .item {
+  background-color: #00BB87;
+  padding: 25px;
+  margin: 1px 0;
+  border-radius: 8px 0px 0px 8px;
+  color: white;
+  left: 0;
+  right: 0;
+  margin-left: 10px;
+  margin-right: 1px;
+  text-align: center;
+}
+
+.timings-container.list .item {
+  float: left;
+  display: inline-block;
+  margin: 10px;
+  padding: 65px;
+}
+
+.status-container {
+  width: 100%;
+  padding: 0;
+  float:right; width: 35%; overflow: hidden;
+}
+
+.status-container .item {
+  background-color: darkslategrey;
+  padding: 25px;
+  margin: 1px 0;
+  border-radius: 0px 8px 8px 0px;
+  color: white;
+  left: 0;
+  right: 0;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.status-container.list .item {
+  float: left;
+  display: inline-block;
+  margin: 10px;
+  padding: 65px;
+}
+
+@media screen and (max-width: 480px) {
+  .timings {
+    font-size: 20px;
+  }
+}

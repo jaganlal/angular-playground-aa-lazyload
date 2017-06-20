@@ -1,0 +1,12 @@
+.form3-content {
+  padding: 20px;
+}
+
+input {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.error {
+	color: red;
+}

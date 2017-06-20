@@ -1,0 +1,69 @@
+.main-content {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  top: 10%;
+  position: absolute;
+}
+
+
+/*some optional CSS that will make your aa.formExtensions experience a little prettier*/
+input.ng-dirty.ng-valid, select.ng-dirty.ng-valid {
+    border: 1px solid Green;
+}
+
+input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid,
+input.ng-invalid.aa-invalid-attempt, select.ng-invalid.aa-invalid-attempt,
+input.ng-invalid.aa-had-focus, select.ng-invalid.aa-had-focus,
+input.explicit-add-error, select.explicit-add-error {
+    border: 1px solid Red;
+}
+
+div.validation-icons {
+    margin-top: 5px;
+    margin-left: -40px;
+}
+
+/*requires font awesome*/
+div.validation-icons i.fa-check {
+    color: green;
+}
+
+/*requires font awesome*/
+div.validation-icons i.fa-exclamation-circle {
+    color: red;
+}
+
+div.validation-error {
+    color: red;
+    font-weight: bold;
+    width: 300px;
+    text-align: left;
+}
+.aa-notification {
+    z-index: 10000;
+    position: relative;
+}
+
+.aa-notify-close {
+    color: black;
+    font-size: 70%;
+    position: absolute;
+    right: -13px;
+    top: -12px;
+}
+
+.aa-notify-close:hover {
+    cursor: pointer;
+}
+/*some optional CSS that will make your aa.formExtensions experience a little prettier*/
+/*drop down mode*/
+.select2-container.ng-dirty.ng-invalid .select2-choice,
+.select2-container.ng-invalid.aa-invalid-attempt .select2-choice,
+.select2-container.ng-invalid.aa-had-focus .select2-choice,
+/*tags mode*/
+.select2-container.ng-dirty.ng-invalid .select2-choices,
+.select2-container.ng-invalid.aa-invalid-attempt .select2-choices,
+.select2-container.ng-invalid.aa-had-focus .select2-choices{
+    border: 1px solid #A90000;
+}
