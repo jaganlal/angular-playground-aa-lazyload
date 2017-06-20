@@ -1,5 +1,3 @@
- //https://www.algotech.solutions/blog/javascript/how-to-create-custom-validator-directives-with-angularjs/
-
 (function() {
   'use strict';
 
