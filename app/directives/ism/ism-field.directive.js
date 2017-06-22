@@ -1,8 +1,8 @@
-(function() {
+(function() {''
   'use strict';
 
   angular.module('jtAngularPlayground.ISM').directive('ismField', IsmField);
-  function IsmField ($log) {
+  function IsmField ($log, $compile) {
     return {
       restrict: 'A',
       require: ['^form','ngModel'],
@@ -13,21 +13,50 @@
         var NAME_PATTERN = '^[a-zA-Z](\s?[a-zA-Z]){1,30}$';
         var NUMBER_PATTERN = '/\[0-9]/g';
 
+        //utility functions
+        function upperCaseFirst(string) {
+          return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
         function setAttribute(name, value, forceSet) {
-          if(!attrs.hasOwnProperty(name) || forceSet) {
-            (value)?attrs.$set(name, value):attrs.$set(name, true);
+          // if(!attrs.hasOwnProperty(name) || forceSet) {
+          //   (value)?attrs.$set(name, value):attrs.$set(name, true);
+          // }
+
+          //deal directly with the element
+          if(!element.attr(name) || forceSet) {
+            (value)?element.attr(name, value):element.attr(name, true);
+          }
+        }
+
+        function removeAttribute(name) {
+          if(element.attr(name)) {
+            element.removeAttr(name);
           }
         }
 
         function constructErrorPlaceHolder() {
           var elem = angular.element('<div>');
-          elem.attr('id', 'notify'+attrs.id);
-          elem.css('display', 'none')
+          var id = 'notify'+element.attr('id');
+          elem.attr('id', id);
+          elem.attr('role', 'alert');
+          elem.css('display', 'none');
           ctrls[0].$$element.append(elem);
+
+          element.attr('aria-describedby', id);
+        }
+
+        function addLabel() {
+          var labelName = attrs.name || attrs.placeholder || attrs.type;
+          var requiredStar = (attrs.required || attrs['ng-required'])?'*':'';
+          var elem = angular.element('<label for='+element.attr('id')+'>'+labelName+' '+requiredStar+'</label>' );
+          elem.attr('aria-hidden', true);
+          elem.css('display', 'none');
+          ctrls[1].$$element.after(elem);
         }
 
         function showError(elem, errorMessage) {
-          var errorElem = ctrls[0].$$element[0].querySelector('div #notify'+attrs.id);
+          var errorElem = ctrls[0].$$element[0].querySelector('div #notify'+element.attr('id'));
           var messageToShow = (errorMessage)?errorMessage+elem[0].validationMessage:elem[0].validationMessage;
           var placeholder = elem.attr('placeholder');
 
@@ -36,13 +65,15 @@
           errorElem.className     = 'error';
           errorElem.style.display = 'block';
 
+          setAttribute('aria-invalid', true);
         }
 
         function resetError(elem) {
-          var errorElem = ctrls[0].$$element[0].querySelector('div #notify'+attrs.id);
+          var errorElem = ctrls[0].$$element[0].querySelector('div #notify'+element.attr('id'));
           if ( 'block' === errorElem.style.display ) {
             elem.removeClass('invalid shake');
             errorElem.style.display = 'none';
+            removeAttribute('aria-invalid');
           }
         }
 
@@ -74,7 +105,7 @@
           }
         }
 
-        function watchForValidity() {
+        function watchErrors() {
           scope.$watchCollection(function() { 
             return ctrls[1].$error;
           }, function(newVal, oldVal) {
@@ -98,7 +129,7 @@
         }
 
         function processNumberInput() {
-          setAttribute('ng-pattern', NUMBER_PATTERN);
+          // setAttribute('ng-pattern', NUMBER_PATTERN);
         }
 
         function processEmailInput() {
@@ -117,33 +148,40 @@
 
         function processAttributes() {
           //set 'id' attribute, if not present
-          setAttribute('id', Date.now()+Math.ceil(Math.random()*1000));
+          var id = Date.now()+Math.ceil(Math.random()*1000);
+          setAttribute('id', id);
+          setAttribute('aria-labelledby', id);
 
           //fall back if user is using ng-required
           if(attrs['required']) {
             setAttribute('ng-required', true);
+            setAttribute('aria-required', true);
           }
 
           //construct the error placeholder for all input elements
           constructErrorPlaceHolder();
 
-          //add event listeners
-          watchForValidity();
+          //add watchers - error watcher & touched watcher
+          watchErrors();
 
           switch(attrs.type) {
             case 'text':
+            addLabel();
             processTextInput();
             break;
 
             case 'number':
+            addLabel();
             processNumberInput();
             break;
 
             case 'email':
+            addLabel();
             processEmailInput();
             break;
 
             case 'url':
+            addLabel();
             processURLInput();
             break;
 
@@ -162,5 +200,5 @@
     }
   }
 
-  IsmField.$inject = ['$log'];
+  IsmField.$inject = ['$log', '$compile'];
 }());
