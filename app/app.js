@@ -12,6 +12,7 @@
       'aa.formExternalConfiguration',
       'aa.notify',
       'aa.select2',
+      'jtAngularPlayground.ISM',
       // 'jtAngularPlayground.Form1ContentController',
       // 'jtAngularPlayground.Form2ContentController', 
       'oc.lazyLoad'

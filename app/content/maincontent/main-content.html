@@ -1,6 +1,21 @@
 <div class="main-content">
-  <div style="margin: 5px;">
-  </div>
+  <h3>ISM Form</h3>
+  <div ism-form validation-config="vm.formconfig" class="" ng-form="ismform" ng-controller="MainContentController">
+    <!-- <input type="email" ng-model="vm.model.email" ism-field required /> -->
+    <input name="email" class="form-input" 
+            placeholder="Email address" 
+            type="email" 
+            ng-model="vm.email" 
+            ng-minlength="6"
+            ng-maxlength="50" 
+            ng-model-options="{ updateOn: 'default blur', debounce: {default: 500, blur: 0} }" 
+            ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"
+            email-exists="emailexists" 
+            ism-field required
+            />
+    <input type="number" placeholder="Age" ng-model="vm.age" ism-field required />
+    <input type="text" ng-model="vm.zipcode" placeholder="Zipcode" name="zip" ism-field zip-validator required/>
 
-  <h1> MAIN CONTENT </h1>
+    <input type="submit" class="btn btn-primary" />
+  </div>
 </div>

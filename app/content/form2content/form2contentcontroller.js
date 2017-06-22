@@ -9,7 +9,9 @@
             email: {
               required: true, 
               'ng-pattern': '/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/',
-              'ng-pattern-msg': 'oops!!! check the email format'
+              'ng-pattern-msg': 'oops!!! check the email format',
+              'isEmailExistsCheck': 'Checking if user already exists', 
+              'emailAlreadyExists': 'The specified email address is already in use, please choose different email address'
             },
             age: {
               required: true

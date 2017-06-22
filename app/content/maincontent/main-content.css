@@ -1,69 +1,79 @@
 .main-content {
+  /*margin: 0 auto;
+  width: 25%;*/
+  max-width: 300px;
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+  /*position: static;*/
+  padding-top: 80px;
+/*
   height: 100%;
   width: 100%;
   text-align: center;
   top: 10%;
-  position: absolute;
+  position: absolute;*/
 }
 
+label,
+  input {
+      display: block;
+      margin-bottom: 5px;
+  }
+  label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #B0BEC5;
+    margin-bottom: 10px;
+  }
+  input {
+      width: 100%;
+      padding: 10px;
+      outline: 0;
+      border: 2px solid #B0BEC5;
+  }
+  input.invalid {
+      border-color: #DD2C00;
+  }
 
-/*some optional CSS that will make your aa.formExtensions experience a little prettier*/
-input.ng-dirty.ng-valid, select.ng-dirty.ng-valid {
-    border: 1px solid Green;
+  .shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  @keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
-input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid,
-input.ng-invalid.aa-invalid-attempt, select.ng-invalid.aa-invalid-attempt,
-input.ng-invalid.aa-had-focus, select.ng-invalid.aa-had-focus,
-input.explicit-add-error, select.explicit-add-error {
-    border: 1px solid Red;
+[id*='notify'] {
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 12px;
+  width: 100%;
+  color: #fff;
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
-
-div.validation-icons {
-    margin-top: 5px;
-    margin-left: -40px;
-}
-
-/*requires font awesome*/
-div.validation-icons i.fa-check {
-    color: green;
-}
-
-/*requires font awesome*/
-div.validation-icons i.fa-exclamation-circle {
-    color: red;
-}
-
-div.validation-error {
-    color: red;
-    font-weight: bold;
-    width: 300px;
-    text-align: left;
-}
-.aa-notification {
-    z-index: 10000;
-    position: relative;
-}
-
-.aa-notify-close {
-    color: black;
-    font-size: 70%;
-    position: absolute;
-    right: -13px;
-    top: -12px;
-}
-
-.aa-notify-close:hover {
-    cursor: pointer;
-}
-/*some optional CSS that will make your aa.formExtensions experience a little prettier*/
-/*drop down mode*/
-.select2-container.ng-dirty.ng-invalid .select2-choice,
-.select2-container.ng-invalid.aa-invalid-attempt .select2-choice,
-.select2-container.ng-invalid.aa-had-focus .select2-choice,
-/*tags mode*/
-.select2-container.ng-dirty.ng-invalid .select2-choices,
-.select2-container.ng-invalid.aa-invalid-attempt .select2-choices,
-.select2-container.ng-invalid.aa-had-focus .select2-choices{
-    border: 1px solid #A90000;
+[id*='notify'].error {
+  background-color: #DD2C00;
 }

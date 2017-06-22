@@ -21,7 +21,7 @@
             else {
               deferred.reject();
             }
-          }, 3000);
+          }, 750);
 
           return deferred.promise;
         };
